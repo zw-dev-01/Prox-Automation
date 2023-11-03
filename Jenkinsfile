@@ -8,7 +8,7 @@ pipeline {
                  sh 'terraform init'
             }
         }
-        stage('Plan') {
+        stage('Test') {
             steps {
                 echo 'Testing..'
                 terraform plan
