@@ -5,6 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building the file'
+                 sh 'terraform init'
             }
         }
         stage('Test') {
