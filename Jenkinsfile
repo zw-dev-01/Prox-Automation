@@ -11,7 +11,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-                terraform plan
+                sh 'terraform plan'
             }
         }
         stage('Deploy') {
