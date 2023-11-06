@@ -25,6 +25,7 @@ pipeline {
                     sh 'pwd'
                     sh 'cat mydev.pub'
                     sh 'cat mydev'
+                    sh 'chmod 600 mydev'
                /* sh 'mkdir .ssh'*/
                     sh 'terraform plan -var ssh_password=$ENV_LAB_SSH_VM'
                 }
