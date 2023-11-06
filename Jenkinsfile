@@ -14,10 +14,9 @@ pipeline {
                  sh 'terraform init'
                 sh 'echo ${PRIV_SSH} > mydev'
                 sh 'echo ${PUB_SSH} > mydev.pub'
-                def output = sh(returnStdout: true, script: 'cat mydev.pub').trim()
+                output = sh(returnStdout: true, script: 'cat mydev.pub').trim()
                 echo "Output: '${output}'"
-                sh 'cat mydev.pub'
-                sh 'cat mydev'
+
             }
         }
         stage('Test') {
