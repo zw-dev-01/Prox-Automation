@@ -11,12 +11,13 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building the file'
-                 sh 'terraform init'
+                sh 'terraform init'
                 sh 'echo ${PRIV_SSH} > mydev'
                 sh 'echo ${PUB_SSH} > mydev.pub'
-                output = sh(returnStdout: true, script: 'cat mydev.pub').trim()
-                echo "Output: '${output}'"
-
+                script {
+                    def output = sh(returnStdout: true, script: 'cat mydev.pub').trim()
+                    echo "Output: '${output}'"
+                }
             }
         }
         stage('Test') {
