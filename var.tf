@@ -29,14 +29,17 @@ variable "ips" {
 	default     = ["192.168.1.51","192.168.1.52","192.168.1.53"]
 }
 
-variable "ssh_keys" {
+/* variable "ssh_keys" {
 	type = map
      default = {
        pub  = ".ssh/mydev.pub"
        priv = ".ssh/mydev"
      }
 }
+*/
 
+variable "priv_key" {}
+variable "pub_key" {}
 variable "ssh_password" {
 }
 
