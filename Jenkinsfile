@@ -27,11 +27,6 @@ pipeline {
                /* sh 'mkdir .ssh'*/
                 sh 'echo ${PRIV_SSH} > mydev'
                 sh 'echo ${PUB_SSH} > mydev.pub'
-                def output = sh(returnStdout: true, script: 'cat mydev.pub').trim()
-                echo "Output: '${output}'"
-                sh 'cat mydev.pub'
-                sh 'cat mydev'
-                
                 sh 'terraform plan -var ssh_password=$ENV_LAB_SSH_VM'
             }
         }
