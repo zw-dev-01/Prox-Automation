@@ -37,7 +37,10 @@ variable "ssh_keys" {
      }
 }
 
-variable "ssh_password" {}
+variable "ssh_password" {
+   default = credentials('lab-ssh-vm')
+
+}
 
 variable "user" {
 	default     ="ubuntu"
