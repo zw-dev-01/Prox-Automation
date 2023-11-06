@@ -12,14 +12,14 @@ pipeline {
             steps {
                 echo 'Building the file'
                 sh 'terraform init'
-                writeFile(file: 'mydev.pub', text: '${PUB_SSH}')
-                writeFile(file: 'mydev', text: '${PRIV_SSH}')
+
             }
         }
         stage('Test') {
             steps {
                 echo 'Plan..'
-   
+                writeFile(file: 'mydev.pub', text: '${PUB_SSH}')
+                writeFile(file: 'mydev', text: '${PRIV_SSH}')
                /* sh 'mkdir .ssh'*/
                 sh 'terraform plan -var ssh_password=$ENV_LAB_SSH_VM'
             }
