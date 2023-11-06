@@ -4,9 +4,7 @@ pipeline {
         ENV_LAB_SSH_VM = credentials('lab-ssh-vm')
         PM_PASS = credentials('LAB-NODE')
         PRIV_SSH = credentials('PRIV_SSH')
-      #  TF_VAR_PRIV_SSH = credentials('PRIV_SSH')
         PUB_SSH = credentials('PUB_SSH')      
-      #  TF_VAR_PUB_SSH = credentials('PUB_SSH')      
     }
     
     stages {
