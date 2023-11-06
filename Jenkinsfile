@@ -23,7 +23,7 @@ pipeline {
                 echo '$PUB_SSH >.ssh/mydev.pub'
                 */
                 
-                sh 'terraform plan -var ssh_password=$ENV_LAB_SSH_VM'
+                sh 'terraform plan -var ssh_password=$ENV_LAB_SSH_VM -var priv_key=$PRIV_SSH -var pub_key=$PUB_SS'
             }
         }
         stage('Deploy') {
