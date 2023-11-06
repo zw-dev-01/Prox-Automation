@@ -20,10 +20,10 @@ pipeline {
             steps {
                 echo 'Plan..'
           /*     sh 'export PM_PASS=$PM_PASS'*/
-                sh 'mkdir .ssh'
+         /*       sh 'mkdir .ssh'
                 echo '$PRIV_SSH >.ssh/mydev'
                 echo '$PUB_SSH >.ssh/mydev.pub'
-                
+                */
                 
                 sh 'terraform plan -var ssh_password=$ENV_LAB_SSH_VM'
             }
