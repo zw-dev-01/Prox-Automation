@@ -17,18 +17,18 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Plan..'
-          /*     sh 'export PM_PASS=$PM_PASS'*/
-         /*       sh 'mkdir .ssh'
+   
+               /* sh 'mkdir .ssh'*/
                 echo '$PRIV_SSH >.ssh/mydev'
                 echo '$PUB_SSH >.ssh/mydev.pub'
-                */
                 
-                sh 'terraform plan -var ssh_password=$ENV_LAB_SSH_VM -var priv_key=$PRIV_SSH -var pub_key=$PUB_SS'
+                
+                sh 'terraform plan -var ssh_password=$ENV_LAB_SSH_VM'
             }
         }
         stage('Deploy') {
             steps {
-                sh 'terraform apply -var ssh_password=$ENV_LAB_SSH_VM -var priv_key=$PRIV_SSH -var pub_key=$PUB_SSH  -auto-approve'
+                sh 'terraform apply -var ssh_password=$ENV_LAB_SSH_VM -auto-approve'
             }
         }
     }
