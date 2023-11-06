@@ -17,7 +17,7 @@ pipeline {
                 echo 'Plan..'
                 sh 'terraform plan -var ssh_password={ENV_LAB_SSH_VM}'
             }
-        
+        }
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
@@ -25,3 +25,4 @@ pipeline {
         }
     }
 }
+
