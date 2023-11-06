@@ -50,7 +50,7 @@ resource "proxmox_vm_qemu" "prox-vm" {
     host = var.ips[count.index]
     user = var.user
   #  private_key = file(var.ssh_keys["priv"])
-    private_key = $PRIV_SSH
+    private_key = TF_VAR_PRIV_SSH
     agent = false
     timeout = "3m"
   }
