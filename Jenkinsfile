@@ -21,7 +21,7 @@ pipeline {
                 script{
                     writeFile(file: 'mydev.pub', text: PUB_SSH,encoding: "UTF-8")
                     writeFile(file: 'mydev', text: PRIV_SSH,encoding: "UTF-8")
-                    withCredentials([file(credentialsId: 'secret', variable: 'mydev')]) {}
+                    withCredentials([file(credentialsId: 'PRIV_SSH_FILE', variable: 'mydev')]) {}
                     sh 'ls -la'
                     sh 'pwd'
                     sh 'cat mydev.pub'
