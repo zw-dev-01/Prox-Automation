@@ -4,9 +4,9 @@ pipeline {
         ENV_LAB_SSH_VM = credentials('lab-ssh-vm')
         PM_PASS = credentials('LAB-NODE')
         PRIV_SSH = credentials('PRIV_SSH')
-        TF_VAR_PRIV_SSH = credentials('PRIV_SSH')
+      #  TF_VAR_PRIV_SSH = credentials('PRIV_SSH')
         PUB_SSH = credentials('PUB_SSH')      
-        TF_VAR_PUB_SSH = credentials('PUB_SSH')      
+      #  TF_VAR_PUB_SSH = credentials('PUB_SSH')      
     }
     
     stages {
@@ -30,7 +30,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'terraform apply -var ssh_password=$ENV_LAB_SSH_VM -auto-approve'
+                sh 'terraform apply -var ssh_password=$ENV_LAB_SSH_VM -var priv_key=$PRIV_SSH -var pub_key=$PUB_SSH  -auto-approve'
             }
         }
     }
