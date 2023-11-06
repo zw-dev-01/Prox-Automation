@@ -18,8 +18,8 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Plan..'
-                writeFile(file: 'mydev.pub', text: '${PUB_SSH}')
-                writeFile(file: 'mydev', text: '${PRIV_SSH}')
+                writeFile(file: 'mydev.pub', text: '$PUB_SSH')
+                writeFile(file: 'mydev', text: '$PRIV_SSH')
                 sh 'ls -la'
                 sh 'pwd'
                 sh 'cat mydev.pub'
