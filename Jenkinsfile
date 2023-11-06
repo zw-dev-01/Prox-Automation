@@ -16,7 +16,7 @@ pipeline {
                 sh 'echo ${PUB_SSH} > mydev.pub'
                 script {
                     def output = sh(returnStdout: true, script: 'cat mydev.pub').trim()
-                    echo "Output: '${output}'"
+                    echo ${output}'
                 }
             }
         }
