@@ -15,7 +15,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Plan..'
-                sh 'terraform plan -var ssh_password={ENV_LAB_SSH_VM}-var PM_PASS={ENV_LAB_NODE'}
+                sh 'terraform plan -var ssh_password={ENV_LAB_SSH_VM} -var PM_PASS={ENV_LAB_NODE'}
             }
         
         stage('Deploy') {
