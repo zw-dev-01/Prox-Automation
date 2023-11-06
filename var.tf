@@ -38,8 +38,6 @@ variable "ssh_keys" {
 }
 
 variable "ssh_password" {
-   default = credentials('lab-ssh-vm')
-
 }
 
 variable "user" {
