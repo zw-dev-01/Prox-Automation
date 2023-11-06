@@ -1,6 +1,10 @@
 pipeline {
     agent any
-
+    environment {
+        ENV-LAB-SSH-VM = credentials('lab-ssh-vm')
+        ENV-LAB-NODE = credentials('LAB-NODE')
+    }
+    
     stages {
         stage('Build') {
             steps {
@@ -11,7 +15,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Plan..'
-                sh "terraform plan -var ssh_password=credentials('lab-ssh-vm')-var PM_PASS=credentials('LAB-NODE')"
+                sh 'terraform plan -var ssh_password=${ENV-LAB-SSH-VM}-var PM_PASS=${ENV-LAB-NODE'}
             }
         }
         stage('Deploy') {
