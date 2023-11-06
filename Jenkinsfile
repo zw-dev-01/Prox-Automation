@@ -3,7 +3,7 @@ pipeline {
     environment {
         ENV_LAB_SSH_VM = credentials('lab-ssh-vm')
        /* PM_PASS = credentials('LAB-NODE')*/
-        PM_PASS = "PRAAAaaa111!!!"
+       
     }
     
     stages {
@@ -16,6 +16,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Plan..'
+                PM_PASS = credentials('LAB-NODE')
                 sh 'export PM_PASS=$PM_PASS'
                 echo '{PM_PASS}'
                 sh 'terraform plan -var ssh_password=$ENV_LAB_SSH_VM'
@@ -23,7 +24,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                sh 'terraform apply -var ssh_password=$ENV_LAB_SSH_VM'
             }
         }
     }
