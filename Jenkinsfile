@@ -18,13 +18,16 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Plan..'
-                writeFile(file: 'mydev.pub', text: '$PUB_SSH')
-                writeFile(file: 'mydev', text: '$PRIV_SSH')
-                sh 'ls -la'
-                sh 'pwd'
-                sh 'cat mydev.pub'
+                script{
+                    writeFile(file: 'mydev.pub', text: PUB_SSH)
+                    writeFile(file: 'mydev', text: PRIV_SSH)
+                    sh 'ls -la'
+                    sh 'pwd'
+                    sh 'cat mydev.pub'
+                    sh 'cat mydev'
                /* sh 'mkdir .ssh'*/
-                sh 'terraform plan -var ssh_password=$ENV_LAB_SSH_VM'
+                    sh 'terraform plan -var ssh_password=$ENV_LAB_SSH_VM'
+                }
             }
         }
         stage('Deploy') {
