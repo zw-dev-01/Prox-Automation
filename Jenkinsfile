@@ -19,8 +19,8 @@ pipeline {
                 echo 'Plan..'
    
                /* sh 'mkdir .ssh'*/
-                echo sh '${PRIV_SSH} > mydev'
-                echo sh '${PUB_SSH} > mydev.pub'
+                sh 'echo ${PRIV_SSH} > mydev'
+                sh 'echo ${PUB_SSH} > mydev.pub'
                 
                 
                 sh 'terraform plan -var ssh_password=$ENV_LAB_SSH_VM'
