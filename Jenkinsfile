@@ -3,7 +3,6 @@ pipeline {
     environment {
         ENV_LAB_SSH_VM = credentials('lab-ssh-vm')
         PM_PASS = credentials('LAB-NODE')
-        pm_password = credentials('LAB-NODE')
     }
     
     stages {
