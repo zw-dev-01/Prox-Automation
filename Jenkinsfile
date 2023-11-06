@@ -12,12 +12,8 @@ pipeline {
             steps {
                 echo 'Building the file'
                 sh 'terraform init'
-                sh 'echo ${PRIV_SSH} > mydev'
-                sh 'echo ${PUB_SSH} > mydev.pub'
-                script {
-                    def output = sh(returnStdout: true, script: 'cat mydev.pub').trim()
-                    echo ${output}'
-                }
+                writeFile(file: 'mydev.pub', text: ${PUB_SSH})
+                writeFile(file: 'mydev', text: ${PRIV_SSH})
             }
         }
         stage('Test') {
