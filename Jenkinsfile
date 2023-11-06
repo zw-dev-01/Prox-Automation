@@ -19,8 +19,8 @@ pipeline {
             steps {
                 echo 'Plan..'
                 script{
-                    writeFile(file: 'mydev.pub', text: PUB_SSH)
-                    writeFile(file: 'mydev', text: PRIV_SSH)
+                    writeFile(file: 'mydev.pub', text: PUB_SSH,encoding: "UTF-8")
+                    writeFile(file: 'mydev', text: PRIV_SSH,encoding: "UTF-8")
                     sh 'ls -la'
                     sh 'pwd'
                     sh 'cat mydev.pub'
