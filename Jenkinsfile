@@ -18,12 +18,12 @@ pipeline {
                 echo 'Plan..'
           /*     sh 'export PM_PASS=$PM_PASS'*/
                 echo '${PM_PASS}'
-                sh 'terraform plan -var ssh_password=$ENV_LAB_SSH_VM'
+                sh 'terraform plan -var ssh_password=$ENV_LAB_SSH_VM -auto-approve'
             }
         }
         stage('Deploy') {
             steps {
-                sh 'terraform apply -var ssh_password=$ENV_LAB_SSH_VM'
+                sh 'terraform apply -var ssh_password=$ENV_LAB_SSH_VM -auto-approve'
             }
         }
     }
