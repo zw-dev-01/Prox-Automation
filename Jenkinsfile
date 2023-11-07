@@ -8,7 +8,7 @@ pipeline {
     }
     
     stages {
-        stage('Build') {
+        stage('Initialize') {
             steps {
                 dir('terraform'){
                     echo 'Building the file'
@@ -16,7 +16,7 @@ pipeline {
                 }
             }
         }
-        stage('Test') {
+        stage('Plan') {
             steps {
                 echo 'Plan..'
                 dir('terraform'){
