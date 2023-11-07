@@ -7,6 +7,11 @@ variable "proxmox_host" {
      }
 }
 
+variable "template"{
+	default     = "UBUNTUMGMT"
+	description = "Name of cloudinit temaplete"
+}
+
 variable "vmid" {
 	default     = 4000
 	description = "Starting ID for the CTs"
