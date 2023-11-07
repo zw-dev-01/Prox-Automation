@@ -10,7 +10,7 @@ resource "proxmox_vm_qemu" "prox-vm" {
   target_node = var.proxmox_host["target_node"]
   vmid = var.vmid + count.index
   full_clone = true
-  clone = "UBUNTUMGMT"
+  clone = var.template
 
   cores = 2
   sockets = 1
