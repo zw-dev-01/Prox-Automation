@@ -23,9 +23,9 @@ pipeline {
                     script{
                         writeFile(file: 'mydev.pub', text: PUB_SSH,encoding: "UTF-8")
                         //writeFile(file: 'mydev2', text: PRIV_SSH,encoding: "UTF-8")
-                        withCredentials([file(credentialsId: 'PRIV_SSH_FILE', variable: 'mydev')]) {
+                        withCredentials([file(credentialsId: 'PRIV_SSH_FILE', variable: 'mydev_tmp')]) {
                         sh 'ls -la'
-                        //sh 'cp $mydev_tmp mydev'
+                        sh 'echo $mydev_tmp'
                         //sh 'cat mydev.pub'
                         sh 'chmod 600 mydev'
                        /* sh 'mkdir .ssh'*/
