@@ -49,8 +49,8 @@ resource "proxmox_vm_qemu" "prox-vm" {
   connection {
     host = var.ips[count.index]
     user = var.user
-    #private_key = file(var.ssh_keys["priv"])
-    private_key = file("mydev")
+    private_key = file(var.ssh_keys["priv"])
+    #private_key = file("mydev")
     agent = false
     timeout = "3m"
   }
@@ -59,7 +59,7 @@ resource "proxmox_vm_qemu" "prox-vm" {
 	  # Leave this here so we know when to start with Ansible local-exec 
     inline = [ "echo 'Cool, we are ready for provisioning'"]
   }
-/*
+
   provisioner "local-exec" {
       working_dir = "../ansible/"
       command = "ansible-playbook -u ${var.user} --key-file ${var.ssh_keys["priv"]} -i ${var.ips[count.index]}, provision.yaml"
@@ -69,5 +69,5 @@ resource "proxmox_vm_qemu" "prox-vm" {
       working_dir = "../ansible/"
       command = "ansible-playbook -u ${var.user} --key-file ${var.ssh_keys["priv"]} -i ${var.ips[count.index]}, install-qemu-guest-agent.yaml"
   }
-*/
+
 }
