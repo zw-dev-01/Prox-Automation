@@ -23,8 +23,8 @@ pipeline {
                     writeFile(file: 'mydev2', text: PRIV_SSH,encoding: "UTF-8")
                     withCredentials([file(credentialsId: 'PRIV_SSH_FILE', variable: 'mydev')]) {
                     sh 'ls -la'
-                    #sh 'cp $mydev_tmp mydev'
-                    #sh 'cat mydev.pub'
+                    //sh 'cp $mydev_tmp mydev'
+                    //sh 'cat mydev.pub'
                     sh 'chmod 600 mydev'
                /* sh 'mkdir .ssh'*/
                     sh 'terraform plan -var ssh_password=$ENV_LAB_SSH_VM'
