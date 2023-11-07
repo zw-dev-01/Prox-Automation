@@ -62,12 +62,12 @@ resource "proxmox_vm_qemu" "prox-vm" {
 
   provisioner "local-exec" {
       working_dir = "ansible/"
-      command = "ansible-playbook -u ${var.user} --key-file ${var.ssh_keys["priv"]} -i ${var.ips[count.index]}, provision.yaml"
+      command = "ansible-playbook -u ${var.user} --key-file ../${var.ssh_keys["priv"]} -i ${var.ips[count.index]}, provision.yaml"
   }
   
   provisioner "local-exec" {
       working_dir = "ansible/"
-      command = "ansible-playbook -u ${var.user} --key-file ${var.ssh_keys["priv"]} -i ${var.ips[count.index]}, install-qemu-guest-agent.yaml"
+      command = "ansible-playbook -u ${var.user} --key-file ../${var.ssh_keys["priv"]} -i ${var.ips[count.index]}, install-qemu-guest-agent.yaml"
   }
 
 }
