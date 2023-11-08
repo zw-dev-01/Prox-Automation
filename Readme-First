@@ -1,1 +1,6 @@
-It is test only
+Only for test pursposes.
+Create 3 vm with static IP.
+Required setting in JENKINS:
+SSH_Key (PRIV) as file
+SSH Password for VM
+
